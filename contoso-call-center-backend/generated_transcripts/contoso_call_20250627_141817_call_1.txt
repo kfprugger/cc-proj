@@ -1,0 +1,22 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:18:17.270440
+Scenario: healthcare_provider
+Sentiment: negative
+Duration: 4 minutes
+Participants: Agent, Dr. Schaefer
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Jenny. How can I help you today?
+Dr. Schaefer: Hi, this is Dr. Schaefer from Contoso General Hospital. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Schaefer. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Schaefer: Yes, the patient's name is Christopher Walton, date of birth 09/04/1964, and patient ID CTM209124.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Schaefer: I need to confirm the details from their visit on 06/12/2025. We're reviewing the Type 2 Diabetes diagnosis and treatment plan.
+Agent: I'm showing some discrepancies in the documentation. Let me transfer you to our medical records department.
+Dr. Schaefer: This is frustrating. I've been trying to get this information for days.
+Agent: I sincerely apologize for the inconvenience. Let me see what I can do to expedite this.
+Dr. Schaefer: The patient's care is being delayed because of these documentation issues.
+Agent: I understand your concern. I'm escalating this to our supervisor immediately.
+Dr. Schaefer: Please do. This needs to be resolved today.
+Agent: Absolutely. You should receive a call back within the hour with a resolution.

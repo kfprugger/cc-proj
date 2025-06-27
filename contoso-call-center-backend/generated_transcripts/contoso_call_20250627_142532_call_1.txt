@@ -1,0 +1,20 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:25:32.886468
+Scenario: healthcare_provider
+Sentiment: positive
+Duration: 2 minutes
+Participants: Agent, Dr. Stephenson
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Christopher. How can I help you today?
+Dr. Stephenson: Hi, this is Dr. Stephenson from Contoso General Hospital. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Stephenson. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Stephenson: Yes, the patient's name is Catherine Davis, date of birth 04/26/1965, and patient ID CTM937959.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Stephenson: I need to confirm the details from their visit on 06/14/2025. We're reviewing the Allergic Rhinitis diagnosis and treatment plan.
+Agent: Absolutely, I can see that visit. The patient was seen for Allergic Rhinitis and the treatment plan was documented thoroughly.
+Dr. Stephenson: Perfect, that matches our records. The patient has been responding well to the treatment.
+Agent: That's wonderful to hear. Is there anything else you need regarding this patient's care?
+Dr. Stephenson: No, that covers everything. Thank you for your help.
+Agent: You're very welcome, Dr. Stephenson. Have a great day!

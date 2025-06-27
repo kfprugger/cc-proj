@@ -1,0 +1,23 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:26:00.906856
+Scenario: healthcare_provider
+Sentiment: neutral
+Duration: 14 minutes
+Participants: Agent, Dr. Barker
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is William. How can I help you today?
+Dr. Barker: Hi, this is Dr. Barker from Contoso Cardiac Institute. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Barker. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Barker: Yes, the patient's name is Miss Vanessa Banks, date of birth 09/03/1997, and patient ID CTM217203.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Barker: I need to confirm the details from their visit on 06/05/2025. We're reviewing the Chronic Fatigue Syndrome diagnosis and treatment plan.
+Agent: I can confirm the visit details. The patient was treated for Chronic Fatigue Syndrome as documented.
+Dr. Barker: Good. I also need to verify the prescribed medications from that visit.
+Agent: Let me check the medication list... I see Gabapentin was prescribed.
+Dr. Barker: That's correct. Can you email me a copy of the complete visit summary?
+Agent: Certainly. I'll send that to your registered email address within the next few minutes.
+Dr. Barker: Thank you. That should be everything I need.
+Agent: You're welcome. Is there anything else I can help you with today?
+Dr. Barker: No, that covers it. Thank you for your assistance.

@@ -1,0 +1,20 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:26:56.150757
+Scenario: healthcare_provider
+Sentiment: positive
+Duration: 7 minutes
+Participants: Agent, Dr. Wright
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Jeff. How can I help you today?
+Dr. Wright: Hi, this is Dr. Wright from Contoso Cardiac Institute. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Wright. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Wright: Yes, the patient's name is Mark Ellison, date of birth 08/24/1995, and patient ID CTM726368.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Wright: I need to confirm the details from their visit on 05/30/2025. We're reviewing the Sleep Apnea diagnosis and treatment plan.
+Agent: Absolutely, I can see that visit. The patient was seen for Sleep Apnea and the treatment plan was documented thoroughly.
+Dr. Wright: Perfect, that matches our records. The patient has been responding well to the treatment.
+Agent: That's wonderful to hear. Is there anything else you need regarding this patient's care?
+Dr. Wright: No, that covers everything. Thank you for your help.
+Agent: You're very welcome, Dr. Wright. Have a great day!

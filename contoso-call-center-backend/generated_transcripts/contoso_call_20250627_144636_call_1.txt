@@ -1,0 +1,20 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:46:36.622076
+Scenario: healthcare_provider
+Sentiment: positive
+Duration: 3 minutes
+Participants: Agent, Dr. Harris
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Robert. How can I help you today?
+Dr. Harris: Hi, this is Dr. Harris from Contoso Women's Health. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Harris. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Harris: Yes, the patient's name is Joseph Torres, date of birth 04/09/1996, and patient ID CTM261351.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Harris: I need to confirm the details from their visit on 06/25/2025. We're reviewing the Anxiety diagnosis and treatment plan.
+Agent: Absolutely, I can see that visit. The patient was seen for Anxiety and the treatment plan was documented thoroughly.
+Dr. Harris: Perfect, that matches our records. The patient has been responding well to the treatment.
+Agent: Is there anything else you need regarding this patient's care?
+Dr. Harris: No, that covers everything. Thank you for your help.
+Agent: You're very welcome, Dr. Harris. Have a great day!

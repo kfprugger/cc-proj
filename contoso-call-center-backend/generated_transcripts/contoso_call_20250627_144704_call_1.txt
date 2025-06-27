@@ -1,0 +1,26 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:47:04.603742
+Scenario: healthcare_provider
+Sentiment: neutral
+Duration: 7 minutes
+Participants: Agent, Dr. Pacheco
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is John. How can I help you today?
+Dr. Pacheco: Hi, this is Dr. Pacheco from Contoso Emergency Care. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Pacheco. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Pacheco: Yes, the patient's name is Teresa Hardy, date of birth 07/21/1966, and patient ID CTM164796.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Pacheco: I need to confirm the details from their visit on 05/30/2025. We're reviewing the COPD diagnosis and treatment plan.
+Agent: I can confirm the visit details. The patient was treated for COPD as documented.
+Dr. Pacheco: Good. I also need to verify the prescribed medications from that visit.
+Agent: Let me check the medication list... I see Lisinopril was prescribed.
+Dr. Pacheco: That's correct. Can you also check the dosage and frequency?
+Agent: Yes, it shows three times daily with water.
+Dr. Pacheco: Good. Were there any drug interaction warnings noted?
+Agent: Let me check... No interaction warnings were flagged in the system.
+Agent: Can you email me a copy of the complete visit summary?
+Dr. Pacheco: Certainly. I'll send that to your registered email address within the next few minutes.
+Agent: You're welcome. Is there anything else I can help you with today?
+Dr. Pacheco: No, that covers it. Thank you for your assistance.

@@ -1,0 +1,32 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:49:27.131431
+Scenario: healthcare_provider
+Sentiment: negative
+Duration: 13 minutes
+Participants: Agent, Dr. Robinson
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Maria. How can I help you today?
+Dr. Robinson: Hi, this is Dr. Robinson from Contoso Family Clinic. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Robinson. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Robinson: Yes, the patient's name is Jose Smith, date of birth 05/13/2005, and patient ID CTM102143.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Robinson: I need to confirm the details from their visit on 06/10/2025. We're reviewing the Anxiety diagnosis and treatment plan.
+Agent: I'm showing some discrepancies in the documentation. Let me transfer you to our medical records department.
+Dr. Robinson: This is frustrating. I've been trying to get this information for days.
+Agent: I sincerely apologize for the inconvenience. Let me see what I can do to expedite this.
+Dr. Robinson: The patient's care is being delayed because of these documentation issues.
+Agent: I completely understand your frustration. This is unacceptable. Let me check with my supervisor right now.
+Dr. Robinson: I've called three times this week and keep getting transferred around.
+Agent: I'm so sorry about that experience. I'm going to stay on this call until we get this resolved.
+Dr. Robinson: The patient has a follow-up appointment tomorrow and I need these records.
+Agent: I understand the urgency. Let me conference in our medical records supervisor immediately.
+Agent: [Brief hold] Dr. Robinson, I have our supervisor on the line. They're pulling the records now.
+Dr. Robinson: Finally. This should have been resolved days ago.
+Agent: You're absolutely right. We're implementing a new process to prevent this from happening again.
+Dr. Robinson: I hope so. This reflects poorly on patient care coordination.
+Agent: I agree completely. We're taking this very seriously and will follow up with you personally.
+Agent: I'm escalating this to our supervisor immediately.
+Dr. Robinson: Please do. This needs to be resolved today.
+Agent: Absolutely. You should receive a call back within the hour with a resolution.

@@ -1,0 +1,22 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:00:05.377144
+Scenario: healthcare_provider
+Sentiment: negative
+Duration: 5 minutes
+Participants: Agent, Dr. Harris
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Alan. How can I help you today?
+Dr. Harris: Hi, this is Dr. Harris from Contoso Women's Health. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Harris. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Harris: Yes, the patient's name is Todd Ibarra, date of birth 06/23/1958, and patient ID CTM655661.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Harris: I need to confirm the details from their visit on 06/18/2025. We're reviewing the COPD diagnosis and treatment plan.
+Agent: I'm showing some discrepancies in the documentation. Let me transfer you to our medical records department.
+Dr. Harris: This is frustrating. I've been trying to get this information for days.
+Agent: I sincerely apologize for the inconvenience. Let me see what I can do to expedite this.
+Dr. Harris: The patient's care is being delayed because of these documentation issues.
+Agent: I understand your concern. I'm escalating this to our supervisor immediately.
+Dr. Harris: Please do. This needs to be resolved today.
+Agent: Absolutely. You should receive a call back within the hour with a resolution.

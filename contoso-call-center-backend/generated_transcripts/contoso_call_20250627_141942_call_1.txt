@@ -1,0 +1,23 @@
+Contoso Call Center Transcript
+Generated: 2025-06-27T14:19:42.829618
+Scenario: healthcare_provider
+Sentiment: neutral
+Duration: 5 minutes
+Participants: Agent, Dr. Smith
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical, this is Ryan. How can I help you today?
+Dr. Smith: Hi, this is Dr. Smith from Contoso Pediatric Center. I'm calling about a patient encounter and need to verify some information.
+Agent: Of course, Dr. Smith. I'd be happy to help. Can you provide me with the patient's information?
+Dr. Smith: Yes, the patient's name is Mary King, date of birth 10/15/2006, and patient ID CTM990786.
+Agent: Thank you. Let me pull up that record... I see the patient here. What specific information do you need?
+Dr. Smith: I need to confirm the details from their visit on 06/11/2025. We're reviewing the Hypertension diagnosis and treatment plan.
+Agent: I can confirm the visit details. The patient was treated for Hypertension as documented.
+Dr. Smith: Good. I also need to verify the prescribed medications from that visit.
+Agent: Let me check the medication list... I see Fluoxetine was prescribed.
+Dr. Smith: That's correct. Can you email me a copy of the complete visit summary?
+Agent: Certainly. I'll send that to your registered email address within the next few minutes.
+Dr. Smith: Thank you. That should be everything I need.
+Agent: You're welcome. Is there anything else I can help you with today?
+Dr. Smith: No, that covers it. Thank you for your assistance.
