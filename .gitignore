@@ -1,0 +1,43 @@
+# User-specific files
+.vscode/
+.idea/
+.venv/
+
+# Build artifacts
+bin/
+obj/
+# contoso-front-end/node_modules/
+
+# Package files
+*.nupkg
+
+# Log files
+log/
+*.log
+
+# Test results
+TestResults/
+
+# Visual Studio files
+*.suo
+*.user
+*.sln.docstates
+
+# Rider files
+.idea/
+*.iml
+
+# Node.js dependencies
+# node_modules/
+
+# Compiled JavaScript
+dist/
+build/
+
+# Environment variables
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
