@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "contoso-call-center-generator"
+version = "0.1.0"
+description = "A Python-based application designed to generate synthetic call center conversations and corresponding audio files for Contoso Medical."
+authors = ["Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+streamlit = "^1.28.0"
+pydub = "^0.25.1"
+gtts = "^2.4.0"
+faker = "^19.0.0"
+openai = "^1.0.0"
+python-dotenv = "^1.0.0"
+wave = "^0.0.2"
+numpy = "^1.24.0"
+scipy = "^1.11.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -26,13 +26,13 @@ A Python-based application designed to generate synthetic call center conversati
 ## Installation
 
 ```bash
-pip install -r requirements.txt
+poetry install
 ```
 
 ## Usage
 
 ```bash
-python app.py
+poetry run python app.py
 ```
 
 ## Disclaimer
