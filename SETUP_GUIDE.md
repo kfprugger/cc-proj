@@ -20,6 +20,7 @@ This guide provides step-by-step instructions for setting up and running the Con
 
 ### System Requirements
 - **Python**: 3.8 or higher
+- **Poetry**: For Python dependency management
 - **Node.js**: 16 or higher
 - **npm** or **yarn**: For frontend package management
 
@@ -29,13 +30,17 @@ This guide provides step-by-step instructions for setting up and running the Con
 
 ### 1. Install System Dependencies
 
-#### Install Python
+#### Install Python and Poetry
 1. Download Python 3.8+ from [python.org](https://www.python.org/downloads/)
 2. During installation, check "Add Python to PATH"
-3. Verify installation:
+3. Install Poetry by running in PowerShell:
+   ```powershell
+   (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | python -
+   ```
+4. Verify installation:
    ```cmd
    python --version
-   pip --version
+   poetry --version
    ```
 
 #### Install Node.js
@@ -58,12 +63,8 @@ This guide provides step-by-step instructions for setting up and running the Con
 git clone <repository-url>
 cd contoso-call-center-backend
 
-# Create virtual environment
-python -m venv venv
-venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies with Poetry
+poetry install
 
 # Create environment file
 copy .env.example .env
@@ -101,8 +102,7 @@ VITE_API_URL=http://localhost:8000
 #### Start Backend (in one terminal)
 ```cmd
 cd contoso-call-center-backend
-venv\Scripts\activate
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+poetry run fastapi dev app/main.py --host 0.0.0.0 --port 8000
 ```
 
 #### Start Frontend (in another terminal)
@@ -126,8 +126,11 @@ npm run dev
 # Update package list
 sudo apt update
 
-# Install Python and pip
+# Install Python and Poetry
 sudo apt install python3 python3-pip python3-venv -y
+
+# Install Poetry
+curl -sSL https://install.python-poetry.org | python3 -
 
 # Install Node.js and npm
 curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
@@ -141,7 +144,7 @@ sudo apt install ffmpeg -y
 
 # Verify installations
 python3 --version
-pip3 --version
+poetry --version
 node --version
 npm --version
 git --version
@@ -155,12 +158,8 @@ ffmpeg -version
 git clone <repository-url>
 cd contoso-call-center-backend
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies with Poetry
+poetry install
 
 # Create environment file
 cp .env.example .env
@@ -208,8 +207,7 @@ VITE_API_URL=http://localhost:8000
 #### Start Backend (in one terminal)
 ```bash
 cd contoso-call-center-backend
-source venv/bin/activate
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+poetry run fastapi dev app/main.py --host 0.0.0.0 --port 8000
 ```
 
 #### Start Frontend (in another terminal)
@@ -241,22 +239,8 @@ cd /home/site/wwwroot
 python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-#### Update `requirements.txt` to include production dependencies:
-```txt
-fastapi[standard]>=0.115.0
-psycopg[binary]>=3.2.0
-faker>=37.0.0
-pydub>=0.25.0
-ffmpeg-python>=0.2.0
-numpy>=2.0.0
-scipy>=1.14.0
-python-multipart>=0.0.20
-azure-cognitiveservices-speech>=1.44.0
-python-dotenv>=1.0.0
-gender-guesser>=0.4.0
-uvicorn[standard]>=0.30.0
-gunicorn>=21.2.0
-```
+#### Ensure `pyproject.toml` includes production dependencies:
+The backend already includes all necessary dependencies in `pyproject.toml`. For production deployment, Poetry will handle dependency resolution and installation.
 
 ### 2. Deploy Backend to Azure App Service
 
