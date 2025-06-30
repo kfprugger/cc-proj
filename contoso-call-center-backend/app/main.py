@@ -21,7 +21,8 @@ from .models import (
     SentimentType,
     DurationType
 )
-from .services import TranscriptGenerator, AudioGenerator, SyntheticDataGenerator
+from .services import AudioGenerator, SyntheticDataGenerator
+from .services.azure_openai_generator import AzureOpenAITranscriptGenerator
 
 app = FastAPI(
     title="Contoso Call Center Synthetic Generator API",
@@ -38,7 +39,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-transcript_generator = TranscriptGenerator()
+transcript_generator = AzureOpenAITranscriptGenerator()
 audio_generator = AudioGenerator()
 data_generator = SyntheticDataGenerator()
 
