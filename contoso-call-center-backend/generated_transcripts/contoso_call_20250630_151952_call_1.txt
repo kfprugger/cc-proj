@@ -1,0 +1,44 @@
+Contoso Call Center Transcript
+Generated: 2025-06-30T15:19:52.800004
+Scenario: healthcare_provider
+Sentiment: positive
+Duration: 2 minutes
+Participants: Agent, Dr. Parks
+Generation Method: Azure OpenAI
+
+==================================================
+
+Agent: Good afternoon, thank you for calling the Patient Support Line. This is Debra speaking. How may I assist you today?
+
+Dr. Parks: Hello Debra, this is Dr. Parks from Contoso Urgent Care. I’m calling regarding a recent patient encounter and need to confirm some medication details for a follow-up appointment.
+
+Agent: Certainly, Dr. Parks. I’d be happy to help. May I have the patient’s full name and date of birth, please?
+
+Dr. Parks: Yes, the patient is Mr. Billy Ford, date of birth March 14th, 1943.
+
+Agent: Thank you. And for additional verification, do you have the patient’s ID number?
+
+Dr. Parks: Yes, his ID is CTM368001.
+
+Agent: Perfect, thank you. One moment while I access Mr. Ford’s record… Alright, I have his file open. How can I assist you with his medication details?
+
+Dr. Parks: Thank you, Debra. Mr. Ford was seen on June 28th, 2025, and was diagnosed with Type 2 Diabetes. I noticed Ibuprofen was listed in his discharge summary. Could you confirm the prescribed dosage and any documented contraindications?
+
+Agent: Let me review the encounter notes… Yes, Mr. Ford was prescribed Ibuprofen 400 mg, to be taken every 8 hours as needed for pain. There are no documented contraindications in his chart, but I do see a note advising to monitor for any gastrointestinal symptoms due to his age and diabetes diagnosis.
+
+Dr. Parks: That’s very helpful, thank you. I’ll make sure to reinforce those precautions during his follow-up. Is there any record of prior adverse reactions to NSAIDs?
+
+Agent: I’ve checked his allergy and adverse reaction history, and there’s nothing listed for NSAIDs or Ibuprofen specifically.
+
+Dr. Parks: Excellent. That’s all I needed. Thank you for your thorough assistance, Debra.
+
+Agent: You’re very welcome, Dr. Parks. If you need anything else regarding Mr. Ford or any other patient, please don’t hesitate to call. Have a wonderful day!
+
+Dr. Parks: Thank you, you as well. Goodbye.
+
+Agent: Goodbye.
+
+==================================================
+
+Disclaimer: This is a synthetic transcript generated for training and simulation purposes only. 
+All patient information is fictitious and does not represent real individuals or medical records.

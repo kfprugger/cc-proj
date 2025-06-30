@@ -1,0 +1,40 @@
+Contoso Call Center Transcript
+Generated: 2025-06-30T15:21:57.933713
+Scenario: patient_visit
+Sentiment: negative
+Duration: 2 minutes
+Participants: Agent, Nicholas George
+Generation Method: Azure OpenAI
+
+==================================================
+
+Agent: Thank you for calling Contoso Medical Center, this is Jeff speaking. How can I assist you today?
+
+Nicholas George: Hi Jeff, I was in for a visit last week, and honestly, I’m not happy with how things went. I’m calling because I still have questions that weren’t answered, and I’m concerned about the care I received.
+
+Agent: I’m sorry to hear that you had a negative experience, Mr. George. I’d like to help address your concerns. May I verify your date of birth for security purposes?
+
+Nicholas George: It’s November 8th, 1937.
+
+Agent: Thank you, Mr. George. I see you visited us on June 26th with Dr. Pena regarding gastroesophageal reflux. Can you tell me more about what you're dissatisfied with?
+
+Nicholas George: Well, first off, Dr. Pena barely spent any time with me. I felt rushed, and I left with more questions than answers. I was prescribed Amlodipine, but no one explained why I was given that, since it’s not for reflux. I’m really confused and don’t know if I should even be taking it.
+
+Agent: I apologize that you felt rushed and left without clear information. I understand your frustration. Just to clarify, Amlodipine is typically used for high blood pressure. Were you also diagnosed with hypertension during your visit?
+
+Nicholas George: No, I wasn’t told anything about high blood pressure. That’s exactly my issue—no explanation, just a prescription shoved at me. I’m worried it’s a mistake.
+
+Agent: I’m very sorry for this confusion, Mr. George. I can escalate your concerns to Dr. Pena’s office and request a nurse or the doctor to call you back as soon as possible to clarify your treatment plan and medications. Would you prefer a call today?
+
+Nicholas George: Yes, today, please. I don’t want to take anything until I know it’s safe.
+
+Agent: Understood. I’ll mark this as urgent. Again, I apologize for your experience, and someone will reach out to you today. Is there anything else I can assist you with right now?
+
+Nicholas George: No, that’s it. Thank you.
+
+Agent: Thank you for calling, Mr. George. We’ll be in touch soon. Take care.
+
+==================================================
+
+Disclaimer: This is a synthetic transcript generated for training and simulation purposes only. 
+All patient information is fictitious and does not represent real individuals or medical records.

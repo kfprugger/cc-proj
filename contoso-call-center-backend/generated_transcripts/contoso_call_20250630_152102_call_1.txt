@@ -1,0 +1,40 @@
+Contoso Call Center Transcript
+Generated: 2025-06-30T15:21:02.869891
+Scenario: caregiver_inquiry
+Sentiment: neutral
+Duration: 1 minutes
+Participants: Agent, Cristina Simmons
+Generation Method: Azure OpenAI
+
+==================================================
+
+Agent: Thank you for calling Contoso Specialty Center. This is Debra. How may I help you today?
+
+Cristina Simmons: Hi, my name is Cristina Simmons. I’m calling about my sister, Elizabeth Jenkins. She’s a patient with you and I have some questions about her care.
+
+Agent: Thank you, Ms. Simmons. For privacy, I’ll need to verify some details. May I have Elizabeth’s date of birth?
+
+Cristina Simmons: Yes, it’s March 29, 1980.
+
+Agent: Thank you. And may I confirm if you’re authorized to discuss Elizabeth’s medical information? Do you have her consent or medical power of attorney?
+
+Cristina Simmons: Yes, I’m listed as her emergency contact and she’s authorized me to speak on her behalf.
+
+Agent: Thank you for confirming. How can I assist you regarding Elizabeth’s care today?
+
+Cristina Simmons: She’s been having some new back pain. Is it okay for her to continue taking Lisinopril, or should we contact her doctor?
+
+Agent: Lisinopril is for blood pressure and shouldn’t affect her back pain, but if the pain is new or worsening, we recommend she contacts her physician to rule out any complications. I can schedule an appointment if you’d like.
+
+Cristina Simmons: That would be helpful, thank you.
+
+Agent: You’re welcome. I’ll arrange that and follow up with you shortly. Is there anything else I can assist with today?
+
+Cristina Simmons: No, that’s all. Thank you for your help.
+
+Agent: You’re welcome. Have a good day.
+
+==================================================
+
+Disclaimer: This is a synthetic transcript generated for training and simulation purposes only. 
+All patient information is fictitious and does not represent real individuals or medical records.

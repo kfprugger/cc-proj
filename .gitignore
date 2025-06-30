@@ -6,7 +6,7 @@
 # Build artifacts
 bin/
 obj/
-# contoso-front-end/node_modules/
+contoso-front-end/node_modules/*
 
 # Package files
 *.nupkg
@@ -41,3 +41,7 @@ build/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Generated Calls
+cc-proj/contoso-call-center-backend/generated_audio/*
+cc-proj/contoso-call-center-backend/generated_transcripts/*

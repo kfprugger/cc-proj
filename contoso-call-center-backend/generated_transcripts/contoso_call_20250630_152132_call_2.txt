@@ -1,0 +1,32 @@
+Contoso Call Center Transcript
+Generated: 2025-06-30T15:21:32.533772
+Scenario: healthcare_provider
+Sentiment: neutral
+Duration: 1 minutes
+Participants: Agent, Dr. Sanchez
+Generation Method: Azure OpenAI
+
+==================================================
+
+Agent: Thank you for calling the Medical Records Support Center. This is Justin speaking. How may I assist you today?
+
+Dr. Sanchez: Hi Justin, this is Dr. Sanchez from Contoso Emergency Care. I’m calling regarding a recent encounter for one of our patients, Michael Alexander. I need to confirm his discharge summary and current medication.
+
+Agent: Thank you, Dr. Sanchez. May I have the patient’s date of birth and medical record ID for verification?
+
+Dr. Sanchez: Sure. His date of birth is July 3rd, 1971, and his ID is CTM630420.
+
+Agent: Thank you, Dr. Sanchez. I have Michael Alexander in our system, visit date June 21st, 2025. Can you confirm the diagnosis you’re inquiring about?
+
+Dr. Sanchez: Yes, the diagnosis is gastroesophageal reflux. I also need to confirm if Fluoxetine was documented as prescribed.
+
+Agent: Correct. The discharge summary lists gastroesophageal reflux, and Fluoxetine is included in his current medication list.
+
+Dr. Sanchez: That’s all I needed. Thank you, Justin.
+
+Agent: You’re welcome, Dr. Sanchez. Have a good day.
+
+==================================================
+
+Disclaimer: This is a synthetic transcript generated for training and simulation purposes only. 
+All patient information is fictitious and does not represent real individuals or medical records.
