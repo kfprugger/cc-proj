@@ -21,7 +21,7 @@ from .models import (
     SentimentType,
     DurationType
 )
-from .services import AudioGenerator, SyntheticDataGenerator
+from .services import AudioGenerator, AzureBatchAudioGenerator, SyntheticDataGenerator
 from .services.azure_openai_generator import AzureOpenAITranscriptGenerator
 
 app = FastAPI(
@@ -41,7 +41,10 @@ app.add_middleware(
 
 transcript_generator = AzureOpenAITranscriptGenerator()
 audio_generator = AudioGenerator()
+batch_audio_generator = AzureBatchAudioGenerator()
 data_generator = SyntheticDataGenerator()
+
+USE_BATCH_AUDIO = os.environ.get('USE_BATCH_AUDIO', 'false').lower() == 'true'
 
 generated_calls_storage: Dict[str, List[GeneratedCall]] = {}
 in_memory_transcripts: Dict[str, str] = {}
@@ -116,7 +119,11 @@ async def generate_calls(request: CallGenerationRequest):
                     'channels': request.audio_settings.channels
                 }
                 audio_id = f"contoso_call_{timestamp}_call_{i+1}"
-                audio_result = audio_generator.generate_audio(
+                
+                selected_generator = batch_audio_generator if USE_BATCH_AUDIO else audio_generator
+                print(f"Debug: Using {'batch' if USE_BATCH_AUDIO else 'standard'} audio generator")
+                
+                audio_result = selected_generator.generate_audio(
                     transcript_data['transcript'],
                     audio_settings,
                     audio_id,
