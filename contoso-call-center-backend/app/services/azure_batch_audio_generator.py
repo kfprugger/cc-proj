@@ -141,7 +141,7 @@ class AzureBatchAudioGenerator:
             ],
             "properties": {
                 "outputFormat": output_format,
-                "concatenateResult": audio_settings.get('concatenate_result', False),
+                "concatenateResult": False,
                 "wordBoundaryEnabled": False,
                 "sentenceBoundaryEnabled": False,
                 "decompressOutputFiles": False
