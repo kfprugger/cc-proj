@@ -25,7 +25,10 @@ This application is designed for training, testing, and demonstration purposes i
 - **Variable Call Duration**: Short (1-3 min), Medium (3-7 min), Long (7-15 min)
 
 ### 🔊 Audio Generation
-- **Azure AI Speech Integration**: High-quality text-to-speech synthesis
+- **Azure AI Speech Integration**: High-quality text-to-speech synthesis with dual implementation options
+- **Azure Speech Batch API**: Server-side audio concatenation for improved performance (configurable)
+- **Standard Audio Generation**: Local pydub-based audio stitching (fallback option)
+- **Multi-Voice SSML Support**: Automatic speaker detection and voice assignment
 - **Gender-Appropriate Voices**: Automatic voice selection based on generated names
 - **Configurable Audio Settings**:
   - Sampling Rate: 8 kHz, 16 kHz, 32 kHz, or 48 kHz
@@ -110,9 +113,33 @@ npm run dev
 ### Environment Variables
 Create a `.env` file in the backend directory:
 ```env
+# Azure Speech Services Configuration
 SPEECH_KEY=your_azure_speech_api_key
 SPEECH_REGION=your_azure_region
+
+# Audio Generation Mode (optional)
+USE_BATCH_AUDIO=false  # Set to 'true' to enable Azure Batch TTS API
+
+# Azure OpenAI Configuration
+AZURE_OPENAI_API_KEY=your_azure_openai_api_key
+AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
+AZURE_OPENAI_DEPLOYMENT_NAME=your_deployment_name
 ```
+
+### Azure Batch TTS Configuration
+The application supports two audio generation modes:
+
+**Standard Mode (Default):**
+- Uses Azure Speech SDK with local pydub audio stitching
+- Reliable fallback option with proven performance
+- Set `USE_BATCH_AUDIO=false` or omit the variable
+
+**Batch Mode (Advanced):**
+- Uses Azure Speech Batch API for server-side audio concatenation
+- Improved performance through single API call
+- Multi-voice SSML with automatic speaker detection
+- Set `USE_BATCH_AUDIO=true` to enable
+- Gracefully falls back to standard mode on API errors
 
 ### Audio Settings
 Configure audio output through the web interface:
