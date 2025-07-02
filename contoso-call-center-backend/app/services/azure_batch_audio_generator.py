@@ -12,7 +12,12 @@ class AzureBatchAudioGenerator:
     def __init__(self):
         self.speech_key = os.environ.get('SPEECH_KEY')
         self.speech_region = os.environ.get('SPEECH_REGION', 'westus3')
-        self.base_url = f"https://{self.speech_region}.api.cognitive.microsoft.com"
+        
+        custom_endpoint = os.environ.get('ENDPOINT')
+        if custom_endpoint:
+            self.base_url = custom_endpoint.rstrip('/')
+        else:
+            self.base_url = f"https://{self.speech_region}.api.cognitive.microsoft.com"
         
         self.voice_settings = {
             'agent': {
