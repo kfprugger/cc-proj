@@ -145,11 +145,7 @@ class AzureBatchAudioGenerator:
                 }
             ],
             "properties": {
-                "outputFormat": output_format,
-                "concatenateResult": audio_settings.get('concatenate_result', False),
-                "wordBoundaryEnabled": False,
-                "sentenceBoundaryEnabled": False,
-                "decompressOutputFiles": False
+                "outputFormat": output_format
             }
         }
         
@@ -221,7 +217,7 @@ class AzureBatchAudioGenerator:
         
         raise Exception(f"Job {job_id} timed out after {timeout} seconds")
 
-    def _download_audio_result(self, job_data: Dict, concatenate_result: bool = False) -> bytes:
+    def _download_audio_result(self, job_data: Dict) -> bytes:
         """Download the synthesized audio from the job results."""
         outputs = job_data.get('outputs', {})
         result_url = outputs.get('result')
@@ -236,9 +232,7 @@ class AzureBatchAudioGenerator:
         if response.status_code == 200:
             content_type = response.headers.get('Content-Type', '')
             
-            if concatenate_result:
-                return response.content
-            elif 'application/zip' in content_type or result_url.endswith('.zip'):
+            if 'application/zip' in content_type or result_url.endswith('.zip'):
                 return self._handle_zip_audio_result(response.content)
             else:
                 return response.content
@@ -300,8 +294,7 @@ class AzureBatchAudioGenerator:
             job_data = self._poll_job_status(job_id)
             print(f"Debug: Job completed successfully")
             
-            concatenate_result = audio_settings.get('concatenate_result', False)
-            audio_bytes = self._download_audio_result(job_data, concatenate_result)
+            audio_bytes = self._download_audio_result(job_data)
             print(f"Debug: Downloaded audio, size: {len(audio_bytes)} bytes")
             
             if audio_id and save_locally:
