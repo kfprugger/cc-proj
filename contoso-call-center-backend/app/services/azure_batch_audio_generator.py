@@ -12,7 +12,7 @@ class AzureBatchAudioGenerator:
     def __init__(self):
         self.speech_key = os.environ.get('SPEECH_KEY')
         self.speech_region = os.environ.get('SPEECH_REGION', 'westus3')
-        self.base_url = f"https://{self.speech_region}.customvoice.api.speech.microsoft.com"
+        self.base_url = f"https://{self.speech_region}.api.cognitive.microsoft.com"
         
         self.voice_settings = {
             'agent': {
@@ -90,8 +90,7 @@ class AzureBatchAudioGenerator:
         """Create SSML document from transcript with multiple speakers and pauses."""
         segments = self._parse_transcript(transcript)
         
-        ssml_parts = ['<?xml version="1.0" encoding="UTF-8"?>']
-        ssml_parts.append('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">')
+        ssml_parts = ['<speak version="1.0" xml:lang="en-US">']
         
         for i, (speaker, text) in enumerate(segments):
             speaker_name = self._extract_name_from_speaker(speaker, transcript)
@@ -119,7 +118,8 @@ class AzureBatchAudioGenerator:
 
     def _submit_batch_job(self, ssml_content: str, audio_settings: Dict, job_name: str) -> str:
         """Submit batch synthesis job to Azure Speech API."""
-        url = f"{self.base_url}/api/texttospeech/3.1-preview1/batchsynthesis"
+        synthesis_id = f"batch_{int(time.time())}_{uuid.uuid4().hex[:8]}"
+        url = f"{self.base_url}/texttospeech/batchsyntheses/{synthesis_id}?api-version=2024-04-01"
         
         headers = {
             'Ocp-Apim-Subscription-Key': self.speech_key,
@@ -129,26 +129,38 @@ class AzureBatchAudioGenerator:
         output_format = self._get_output_format(audio_settings)
         
         payload = {
-            "displayName": job_name,
             "description": f"Batch synthesis job for {job_name}",
-            "textType": "SSML",
+            "inputKind": "SSML",
             "inputs": [
                 {
-                    "text": ssml_content
+                    "content": ssml_content
                 }
             ],
             "properties": {
                 "outputFormat": output_format,
                 "concatenateResult": True,
-                "destinationContainerUrl": None
+                "wordBoundaryEnabled": False,
+                "sentenceBoundaryEnabled": False,
+                "decompressOutputFiles": False
             }
         }
         
-        response = requests.post(url, headers=headers, json=payload)
+        print(f"Debug: Speech key length: {len(self.speech_key) if self.speech_key else 'None'}")
+        print(f"Debug: Speech region: {self.speech_region}")
+        print(f"Debug: Submitting to URL: {url}")
+        print(f"Debug: Headers: {headers}")
+        print(f"Debug: SSML content length: {len(ssml_content)}")
+        print(f"Debug: Payload: {json.dumps(payload, indent=2)}")
+        
+        response = requests.put(url, headers=headers, json=payload)
+        
+        print(f"Debug: Response status: {response.status_code}")
+        print(f"Debug: Response headers: {dict(response.headers)}")
+        print(f"Debug: Response text: {response.text}")
         
         if response.status_code == 201:
             job_data = response.json()
-            return job_data['id']
+            return synthesis_id
         else:
             raise Exception(f"Failed to submit batch job: {response.status_code} - {response.text}")
 
@@ -170,7 +182,7 @@ class AzureBatchAudioGenerator:
 
     def _poll_job_status(self, job_id: str, timeout: int = 300) -> Dict:
         """Poll job status until completion or timeout."""
-        url = f"{self.base_url}/api/texttospeech/3.1-preview1/batchsynthesis/{job_id}"
+        url = f"{self.base_url}/texttospeech/batchsyntheses/{job_id}?api-version=2024-04-01"
         
         headers = {
             'Ocp-Apim-Subscription-Key': self.speech_key
