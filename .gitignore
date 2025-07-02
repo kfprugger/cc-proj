@@ -6,7 +6,6 @@
 # Build artifacts
 bin/
 obj/
-contoso-front-end/node_modules/*
 
 # Package files
 *.nupkg
@@ -28,7 +27,8 @@ TestResults/
 *.iml
 
 # Node.js dependencies
-# node_modules/
+node_modules/
+contoso-call-center-frontend/node_modules/
 
 # Compiled JavaScript
 dist/
