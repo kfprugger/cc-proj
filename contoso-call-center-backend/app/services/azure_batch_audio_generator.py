@@ -6,6 +6,8 @@ from typing import Dict, List, Optional, Tuple, Union
 import uuid
 from datetime import datetime
 import gender_guesser.detector as gender
+import zipfile
+import io
 
 
 class AzureBatchAudioGenerator:
@@ -143,7 +145,7 @@ class AzureBatchAudioGenerator:
             ],
             "properties": {
                 "outputFormat": output_format,
-                "concatenateResult": True,
+                "concatenateResult": audio_settings.get('concatenate_result', False),
                 "wordBoundaryEnabled": False,
                 "sentenceBoundaryEnabled": False,
                 "decompressOutputFiles": False
@@ -218,7 +220,7 @@ class AzureBatchAudioGenerator:
         
         raise Exception(f"Job {job_id} timed out after {timeout} seconds")
 
-    def _download_audio_result(self, job_data: Dict) -> bytes:
+    def _download_audio_result(self, job_data: Dict, concatenate_result: bool = False) -> bytes:
         """Download the synthesized audio from the job results."""
         outputs = job_data.get('outputs', {})
         result_url = outputs.get('result')
@@ -231,9 +233,52 @@ class AzureBatchAudioGenerator:
         response = requests.get(result_url)
         
         if response.status_code == 200:
-            return response.content
+            if concatenate_result:
+                return response.content
+            else:
+                return self._extract_and_concatenate_zip(response.content)
         else:
             raise Exception(f"Failed to download audio: {response.status_code} - {response.text}")
+
+    def _extract_and_concatenate_zip(self, zip_content: bytes) -> bytes:
+        """Extract audio files from ZIP and concatenate them locally."""
+        try:
+            import wave
+            
+            with zipfile.ZipFile(io.BytesIO(zip_content), 'r') as zip_file:
+                audio_files = [f for f in zip_file.namelist() if f.endswith('.wav')]
+                audio_files.sort()  # Ensure consistent order
+                
+                if not audio_files:
+                    raise Exception("No audio files found in ZIP archive")
+                
+                print(f"Debug: Found {len(audio_files)} audio files in ZIP: {audio_files}")
+                
+                first_file_data = zip_file.read(audio_files[0])
+                first_wave = wave.open(io.BytesIO(first_file_data), 'rb')
+                params = first_wave.getparams()
+                first_wave.close()
+                
+                output_buffer = io.BytesIO()
+                output_wave = wave.open(output_buffer, 'wb')
+                output_wave.setparams(params)
+                
+                for audio_file in audio_files:
+                    file_data = zip_file.read(audio_file)
+                    file_wave = wave.open(io.BytesIO(file_data), 'rb')
+                    output_wave.writeframes(file_wave.readframes(file_wave.getnframes()))
+                    file_wave.close()
+                
+                output_wave.close()
+                concatenated_audio = output_buffer.getvalue()
+                output_buffer.close()
+                
+                print(f"Debug: Concatenated {len(audio_files)} files into {len(concatenated_audio)} bytes")
+                return concatenated_audio
+                
+        except Exception as e:
+            print(f"Error extracting and concatenating ZIP: {e}")
+            return zip_content
 
     def generate_audio(self, transcript: str, audio_settings: Dict, audio_id: Optional[str] = None, save_locally: bool = True) -> Optional[Union[str, bytes]]:
         """Generate audio using Azure Batch Synthesis API."""
@@ -250,7 +295,8 @@ class AzureBatchAudioGenerator:
             job_data = self._poll_job_status(job_id)
             print(f"Debug: Job completed successfully")
             
-            audio_bytes = self._download_audio_result(job_data)
+            concatenate_result = audio_settings.get('concatenate_result', False)
+            audio_bytes = self._download_audio_result(job_data, concatenate_result)
             print(f"Debug: Downloaded audio, size: {len(audio_bytes)} bytes")
             
             if audio_id and save_locally:
