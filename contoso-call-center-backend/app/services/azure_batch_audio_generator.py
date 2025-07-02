@@ -15,12 +15,7 @@ class AzureBatchAudioGenerator:
     def __init__(self):
         self.speech_key = os.environ.get('SPEECH_KEY')
         self.speech_region = os.environ.get('SPEECH_REGION', 'westus3')
-        
-        custom_endpoint = os.environ.get('ENDPOINT')
-        if custom_endpoint:
-            self.base_url = custom_endpoint.rstrip('/')
-        else:
-            self.base_url = f"https://{self.speech_region}.api.cognitive.microsoft.com"
+        self.base_url = f"https://{self.speech_region}.api.cognitive.microsoft.com"
         
         self.voice_settings = {
             'agent': {
@@ -145,7 +140,11 @@ class AzureBatchAudioGenerator:
                 }
             ],
             "properties": {
-                "outputFormat": output_format
+                "outputFormat": output_format,
+                "concatenateResult": False,
+                "wordBoundaryEnabled": False,
+                "sentenceBoundaryEnabled": False,
+                "decompressOutputFiles": False
             }
         }
         
@@ -238,46 +237,6 @@ class AzureBatchAudioGenerator:
                 return response.content
         else:
             raise Exception(f"Failed to download audio: {response.status_code} - {response.text}")
-
-    def _extract_and_concatenate_zip(self, zip_content: bytes) -> bytes:
-        """Extract audio files from ZIP and concatenate them locally."""
-        try:
-            import wave
-            
-            with zipfile.ZipFile(io.BytesIO(zip_content), 'r') as zip_file:
-                audio_files = [f for f in zip_file.namelist() if f.endswith('.wav')]
-                audio_files.sort()  # Ensure consistent order
-                
-                if not audio_files:
-                    raise Exception("No audio files found in ZIP archive")
-                
-                print(f"Debug: Found {len(audio_files)} audio files in ZIP: {audio_files}")
-                
-                first_file_data = zip_file.read(audio_files[0])
-                first_wave = wave.open(io.BytesIO(first_file_data), 'rb')
-                params = first_wave.getparams()
-                first_wave.close()
-                
-                output_buffer = io.BytesIO()
-                output_wave = wave.open(output_buffer, 'wb')
-                output_wave.setparams(params)
-                
-                for audio_file in audio_files:
-                    file_data = zip_file.read(audio_file)
-                    file_wave = wave.open(io.BytesIO(file_data), 'rb')
-                    output_wave.writeframes(file_wave.readframes(file_wave.getnframes()))
-                    file_wave.close()
-                
-                output_wave.close()
-                concatenated_audio = output_buffer.getvalue()
-                output_buffer.close()
-                
-                print(f"Debug: Concatenated {len(audio_files)} files into {len(concatenated_audio)} bytes")
-                return concatenated_audio
-                
-        except Exception as e:
-            print(f"Error extracting and concatenating ZIP: {e}")
-            return zip_content
 
     def generate_audio(self, transcript: str, audio_settings: Dict, audio_id: Optional[str] = None, save_locally: bool = True) -> Optional[Union[str, bytes]]:
         """Generate audio using Azure Batch Synthesis API."""
