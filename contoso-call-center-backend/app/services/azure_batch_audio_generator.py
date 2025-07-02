@@ -6,6 +6,9 @@ from typing import Dict, List, Optional, Tuple, Union
 import uuid
 from datetime import datetime
 import gender_guesser.detector as gender
+import zipfile
+import io
+from pydub import AudioSegment
 
 
 class AzureBatchAudioGenerator:
@@ -138,7 +141,7 @@ class AzureBatchAudioGenerator:
             ],
             "properties": {
                 "outputFormat": output_format,
-                "concatenateResult": True,
+                "concatenateResult": False,
                 "wordBoundaryEnabled": False,
                 "sentenceBoundaryEnabled": False,
                 "decompressOutputFiles": False
@@ -226,7 +229,12 @@ class AzureBatchAudioGenerator:
         response = requests.get(result_url)
         
         if response.status_code == 200:
-            return response.content
+            content_type = response.headers.get('Content-Type', '')
+            
+            if 'application/zip' in content_type or result_url.endswith('.zip'):
+                return self._handle_zip_audio_result(response.content)
+            else:
+                return response.content
         else:
             raise Exception(f"Failed to download audio: {response.status_code} - {response.text}")
 
@@ -258,6 +266,44 @@ class AzureBatchAudioGenerator:
             import traceback
             print(f"Full traceback: {traceback.format_exc()}")
             return None
+
+    def _handle_zip_audio_result(self, zip_content: bytes) -> bytes:
+        """Handle ZIP archive containing multiple audio files and concatenate them."""
+        print("Debug: Processing ZIP archive with multiple audio files")
+        
+        try:
+            with zipfile.ZipFile(io.BytesIO(zip_content), 'r') as zip_file:
+                audio_files = [f for f in zip_file.namelist() if f.endswith('.wav')]
+                audio_files.sort()  # Ensure consistent ordering
+                
+                if not audio_files:
+                    raise Exception("No audio files found in ZIP archive")
+                
+                print(f"Debug: Found {len(audio_files)} audio files in ZIP: {audio_files}")
+                
+                combined_audio = None
+                
+                for audio_file in audio_files:
+                    with zip_file.open(audio_file) as f:
+                        audio_data = f.read()
+                        audio_segment = AudioSegment.from_wav(io.BytesIO(audio_data))
+                        
+                        if combined_audio is None:
+                            combined_audio = audio_segment
+                        else:
+                            # Add a small pause between segments
+                            pause = AudioSegment.silent(duration=500)  # 500ms pause
+                            combined_audio = combined_audio + pause + audio_segment
+                
+                output_buffer = io.BytesIO()
+                combined_audio.export(output_buffer, format="wav")
+                
+                print(f"Debug: Successfully concatenated {len(audio_files)} audio files")
+                return output_buffer.getvalue()
+                
+        except Exception as e:
+            print(f"Error processing ZIP audio result: {e}")
+            raise Exception(f"Failed to process ZIP audio result: {e}")
 
     def _save_audio_to_file(self, audio_bytes: bytes, audio_id: str) -> str:
         """Save audio bytes to file and return file path."""

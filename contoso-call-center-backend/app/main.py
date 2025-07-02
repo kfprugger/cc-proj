@@ -120,15 +120,28 @@ async def generate_calls(request: CallGenerationRequest):
                 }
                 audio_id = f"contoso_call_{timestamp}_call_{i+1}"
                 
-                selected_generator = batch_audio_generator if USE_BATCH_AUDIO else audio_generator
-                print(f"Debug: Using {'batch' if USE_BATCH_AUDIO else 'standard'} audio generator")
+                audio_result = None
                 
-                audio_result = selected_generator.generate_audio(
-                    transcript_data['transcript'],
-                    audio_settings,
-                    audio_id,
-                    save_locally=request.audio_settings.save_audio_locally
-                )
+                if USE_BATCH_AUDIO:
+                    print(f"Debug: Attempting batch audio generation")
+                    audio_result = batch_audio_generator.generate_audio(
+                        transcript_data['transcript'],
+                        audio_settings,
+                        audio_id,
+                        save_locally=request.audio_settings.save_audio_locally
+                    )
+                    
+                    if audio_result is None:
+                        print(f"Debug: Batch audio generation failed, falling back to standard generator")
+                
+                if audio_result is None:
+                    print(f"Debug: Using standard audio generator")
+                    audio_result = audio_generator.generate_audio(
+                        transcript_data['transcript'],
+                        audio_settings,
+                        audio_id,
+                        save_locally=request.audio_settings.save_audio_locally
+                    )
                 
                 if audio_result:
                     if isinstance(audio_result, str) and os.path.exists(audio_result):
