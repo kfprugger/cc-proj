@@ -11,14 +11,14 @@ fastapi = {extras = ["standard"], version = "^0.115.14"}
 psycopg = {extras = ["binary"], version = "^3.2.9"}
 faker = "^37.4.0"
 pydub = "^0.25.1"
-python-multipart = "^0.0.20"
+python-multipart = "^0.0.27"
 azure-cognitiveservices-speech = "^1.44.0"
-python-dotenv = "^1.1.1"
+python-dotenv = "^1.2.2"
 gender-guesser = "^0.4.0"
 openai = "^1.0.0"
 pydantic = "^2.0.0"
 numpy = "^2.3.1"
-requests = "^2.31.0"
+requests = "^2.33.0"
 
 [build-system]
 requires = ["poetry-core"]
