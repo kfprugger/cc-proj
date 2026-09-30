@@ -83,23 +83,23 @@ cc-proj/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.12+
-- Node.js 18+
-- Azure Speech Services API key
+- Python 3.12 (the verified audio runtime)
+- Poetry 2.5 or newer
+- Node.js 22 or newer
+- Azure Speech Services and Azure OpenAI credentials for cloud generation
 
 ### Backend Setup
 ```bash
 cd contoso-call-center-backend
-poetry install
-cp .env.example .env
-# Add your Azure Speech API key to .env
+poetry sync
+# Configure .env with the Azure Speech and Azure OpenAI settings below.
 poetry run fastapi dev app/main.py --host 0.0.0.0 --port 8000
 ```
 
 ### Frontend Setup
 ```bash
 cd contoso-call-center-frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -107,6 +107,27 @@ npm run dev
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:8000
 - API Documentation: http://localhost:8000/docs
+
+### Dependency maintenance
+
+The September 2026 security update upgrades FastAPI to the 0.133 release line,
+which supports patched Starlette 1.x. The backend declares security minimums for
+Starlette, AnyIO, Click, multipart parsing, dotenv, and Requests. The Poetry lock
+also updates Azure Core, urllib3, IDNA, and Pygments. The frontend uses Vite 6.4.3
+and patched transitive dependencies without changing its React version.
+
+Commit `poetry.lock` and `package-lock.json` with dependency changes. Generate
+them with Poetry and npm, rather than editing lock entries. Use the lockfiles for
+reproducible installs; `requirements.txt` retains compatible security minimums
+for environments that install with pip.
+
+Local checks are `poetry check --lock`, `poetry run python test_batch_audio.py`,
+`npm run build`, and `npm run lint` in their respective backend/frontend folders.
+The batch-audio check exercises SSML and transcript parsing without synthesizing
+cloud audio. The API's health, scenarios, request validation, CORS, transcript
+downloads, and unavailable-service error handling can also be checked locally.
+Successful cloud transcript and audio generation still requires valid Azure
+credentials and deployments; offline checks do not verify those services.
 
 ## 🔧 Configuration
 

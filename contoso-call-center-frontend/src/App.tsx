@@ -46,8 +46,8 @@ interface GeneratedCall {
     sentiment: string
     duration: string
     participants: string[]
-    synthetic_data: Record<string, any>
-    metadata: Record<string, any>
+    synthetic_data: Record<string, unknown>
+    metadata: Record<string, unknown> & { generated_at: string; word_count: number }
   }
   audio_file_url?: string
 }
@@ -85,7 +85,7 @@ function App() {
       const response = await fetch(`${API_URL}/scenarios`)
       const data = await response.json()
       setScenarios(data.scenarios)
-    } catch (err) {
+    } catch {
       setError('Failed to load scenarios')
     }
   }
@@ -188,7 +188,7 @@ ${JSON.stringify(call.transcript_data.synthetic_data, null, 2)}
       a.click()
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
-    } catch (err) {
+    } catch {
       setError('Failed to download audio file')
     }
   }
